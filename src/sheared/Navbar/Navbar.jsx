@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from '../../assets/others/bistro_logo.png'
 import shopIcon from '../../assets/icon/151-1511569_cart-notifications-free-shopping-cart-favicon-hd-png-removebg-preview.png'
+import { NavLink } from "react-router-dom";
+
 
 const Navbar = () => {
 
@@ -49,15 +51,22 @@ const Navbar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    {manuItem.map(item =>
-                        <li key={item.id} className='uppercase font-semibold text-white hover:text-yellow-500'>
-                            <a href={item.link} className="flex items-center gap-2">
+                    {manuItem.map(item => (
+                        <li key={item.id} className="uppercase font-semibold">
+                            <NavLink
+                                to={item.link}
+                                className={({ isActive }) =>
+                                    `flex items-center gap-2 ${isActive ? "text-yellow-500" : "text-white hover:text-yellow-500"
+                                    }`
+                                }
+                            >
                                 <span>{item.name}</span>
                                 {item.icon && <img className="w-8" src={item.icon} alt={item.name} />}
-                            </a>
-
-                        </li>)}
+                            </NavLink>
+                        </li>
+                    ))}
                 </ul>
+
             </div>
             <div className="navbar-end">
                 <a className="btn">Button</a>
