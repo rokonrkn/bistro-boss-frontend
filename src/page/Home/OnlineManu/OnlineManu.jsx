@@ -14,7 +14,7 @@ import SectionHeading from '../../../components/SectionHeading/SectionHeading';
 
 const OnlineManu = () => {
     return (
-        <div>
+        <div className='md:mx-20'>
             <SectionHeading
                 subHeading={"---From 11:00am to 10:00pm---"}
                 mainHeading={"Order Online"}
@@ -34,7 +34,7 @@ const OnlineManu = () => {
                     <SwiperSlide>
                         <div className="relative">
                             <img src={manuImg1} alt="" className="" />
-                            <h3 className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-2xl text-white uppercase text-center">
+                            <h3 className="absolute bottom-10 left-24 transform  text-2xl text-white uppercase text-center">
                                 salat
                             </h3>
                         </div>
@@ -42,7 +42,7 @@ const OnlineManu = () => {
                     <SwiperSlide>
                         <div className="relative">
                             <img src={manuImg2} alt="" className="" />
-                            <h3 className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-2xl text-white uppercase text-center">
+                            <h3 className="absolute  bottom-6 left-24 transform  text-2xl text-white uppercase text-center">
                                 pizzas
                             </h3>
                         </div>
@@ -50,7 +50,7 @@ const OnlineManu = () => {
                     <SwiperSlide>
                         <div className="relative">
                             <img src={manuImg3} alt="" className="" />
-                            <h3 className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-2xl text-white uppercase text-center">
+                            <h3 className="absolute bottom-6 left-24 transform  text-2xl text-white uppercase text-center">
                                 soup
                             </h3>
                         </div>
@@ -58,7 +58,7 @@ const OnlineManu = () => {
                     <SwiperSlide>
                         <div className="relative">
                             <img src={manuImg4} alt="" className="" />
-                            <h3 className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-2xl text-white uppercase text-center">
+                            <h3 className="absolute bottom-6 left-24 transform  text-2xl text-white uppercase text-center">
                                 desserts
                             </h3>
                         </div>
@@ -66,7 +66,7 @@ const OnlineManu = () => {
                     <SwiperSlide>
                         <div className="relative">
                             <img src={manuImg5} alt="" className="" />
-                            <h3 className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-2xl text-white uppercase text-center">
+                            <h3 className="absolute bottom-6 left-24 transform  text-2xl text-white uppercase text-center">
                                 salat
                             </h3>
                         </div>
