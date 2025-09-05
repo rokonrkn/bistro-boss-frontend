@@ -6,17 +6,21 @@ import OurManu from '../OurManu/OurManu';
 import Number from '../../../components/SectionHeading/Number/Number';
 import CheckInManu from '../CheckInManu/CheckInManu';
 import Reviews from '../reviews/reviews';
+import { Helmet } from 'react-helmet';
 
 const Home = () => {
     return (
         <div>
-           <HeroSection />
-           <OnlineManu />
-           <BistroBoss />
-           <OurManu />
-           <Number />
-           <CheckInManu />
-           <Reviews />
+            <Helmet>
+                <title>Bistro Boss | Home</title>
+            </Helmet>
+            <HeroSection />
+            <OnlineManu />
+            <BistroBoss />
+            <OurManu />
+            <Number />
+            <CheckInManu />
+            <Reviews />
         </div>
     );
 };

@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import SectionHeading from '../../../components/SectionHeading/SectionHeading';
 import OurManuDetails from './OurManuDetails';
+import useOurManu from '../../../hooks/useOurManu';
 
 const OurManu = () => {
 
+    const [manu] = useOurManu();
     const [popular, setPopular] = useState([]);
-    console.log(popular);
 
+    const popularItems = manu.filter(item => item.category === 'popular');
     useEffect(() => {
-        fetch('ourManu.json')
-            .then(res => res.json())
-            .then(data => {
-                const popularItems = data.filter(item => item.category === 'popular');
-                setPopular(popularItems);
-            })
-    }, [])
+        setPopular(popularItems);
+    }, [manu]);
 
     return (
         <div>
