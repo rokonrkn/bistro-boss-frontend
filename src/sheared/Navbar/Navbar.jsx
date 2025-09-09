@@ -11,7 +11,7 @@ const Navbar = () => {
         { id: 2, name: 'Contact Us', link: '/about' },
         { id: 3, name: 'Dashboard', link: '/services' },
         { id: 4, name: 'Our Manu', link: '/manu' },
-        { id: 5, name: 'Our Shop', link: '/login', icon: shopIcon },
+        { id: 5, name: 'Our Shop', link: '/ourShop', icon: shopIcon },
     ]
 
 
@@ -50,7 +50,7 @@ const Navbar = () => {
                 <img className='w-48' src={logo} alt="" />
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+                <ul className="menu menu-horizontal px-1 flex items-center">
                     {manuItem.map(item => (
                         <li key={item.id} className="uppercase font-semibold">
                             <NavLink
@@ -60,7 +60,7 @@ const Navbar = () => {
                                     }`
                                 }
                             >
-                                <span>{item.name}</span>
+                                <span className=''>{item.name}</span>
                                 {item.icon && <img className="w-8" src={item.icon} alt={item.name} />}
                             </NavLink>
                         </li>
