@@ -3,16 +3,39 @@
 @tailwind utilities;
 
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+
 }
-body{
+
+body {
     background-color: white;
     height: 100vh;
     font-family: 'inter', sans-serif;
     color: black;
 }
 
+.react-tabs__tab-list {
+    border-bottom: none !important;
+}
+/* 
+.react-tabs__tab {
+    display: inline-block;
+    border: none !important;
+    border-bottom: 1px solid transparent;
+    bottom: -1px;
+    position: relative; 
+    list-style: none;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.react-tabs__tab--selected {
+    background: #fff;
+    border-color: #aaa;
+    color: black;
+    border-radius: none;
+    border-bottom: 2px solid #007bff !important;
+} */
