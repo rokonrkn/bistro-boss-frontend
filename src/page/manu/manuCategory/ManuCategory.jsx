@@ -4,13 +4,13 @@ import SectionHeading from '../../../components/SectionHeading/SectionHeading';
 import TodayOffer from './TodayOffer';
 import coverImg from '../../../assets/home/chef-service.jpg'
 import Cover from '../../../sheared/Cover/Cover';
+import { Link } from 'react-router-dom';
 
 const ManuCategory = () => {
 
     const [manu] = useOurManu();
 
     const offered = manu.filter(item => item.category === 'offered');
-    console.log("offred data", offered);
     const dessert = manu.filter(item => item.category === 'dessert');
     const pizza = manu.filter(item => item.category === 'pizza');
     const salad = manu.filter(item => item.category === 'salad');
@@ -39,6 +39,9 @@ const ManuCategory = () => {
                         </TodayOffer>)
                     }
                 </div>
+                <Link to={`/ourShop/${dessert.categoriesName}`}>
+                    <button className="btn btn-outline border-0 border-b-4 flex mx-auto mt-10">Order our favorite food</button>
+                </Link>
             </div>
             {/* pizza item  */}
             <div className="mt-16">
@@ -76,6 +79,7 @@ const ManuCategory = () => {
                     }
                 </div>
             </div>
+
         </div>
     );
 };

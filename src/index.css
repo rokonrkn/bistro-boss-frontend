@@ -17,25 +17,36 @@ body {
     color: black;
 }
 
+/* Tab list should be horizontal */
 .react-tabs__tab-list {
-    border-bottom: none !important;
-}
-/* 
-.react-tabs__tab {
-    display: inline-block;
-    border: none !important;
-    border-bottom: 1px solid transparent;
-    bottom: -1px;
-    position: relative; 
-    list-style: none;
-    padding: 6px 12px;
-    cursor: pointer;
+  display: flex;
+  gap: 24px; /* spacing between tabs */
+  border-bottom: 1px solid #e5e7eb; /* light gray bottom line */
+  margin-bottom: 1rem;
+  padding-left: 0;
+  cursor: pointer;
+  justify-content: center; /* optional: center align */
 }
 
+/* Normal tab */
+.react-tabs__tab {
+  list-style: none;
+  padding: 8px 16px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+/* Hover effect */
+.react-tabs__tab:hover {
+  color: #ef4444;
+}
+
+/* Active (clicked) tab */
 .react-tabs__tab--selected {
-    background: #fff;
-    border-color: #aaa;
-    color: black;
-    border-radius: none;
-    border-bottom: 2px solid #007bff !important;
-} */
+  color: #ef4444; /* red text */
+  border-bottom: 2px solid #ef4444 !important; 
+  font-weight: 600;
+}
