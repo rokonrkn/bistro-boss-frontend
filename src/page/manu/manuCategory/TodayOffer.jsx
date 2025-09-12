@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const TodayOffer = ({items}) => {
-    console.log("today offer item", items);
+    // console.log("today offer item", items);
     const { _id, name, recipe, image, price } = items;
-    console.log("today offer item name", name);
+    // console.log("today offer item name", name);
     return (
         <div className="">
             <div className="flex gap-6">
@@ -14,6 +15,7 @@ const TodayOffer = ({items}) => {
                 </div>
                 <p className="text-yellow-600">${price}</p>
             </div>
+            
         </div>
     );
 };
