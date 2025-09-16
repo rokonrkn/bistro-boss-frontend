@@ -8,7 +8,7 @@ const Navbar = () => {
 
     const manuItem = [
         { id: 1, name: 'Home', link: '/' },
-        { id: 2, name: 'Contact Us', link: '/about' },
+        { id: 2, name: 'Contact Us', link: '/contact' },
         { id: 3, name: 'Dashboard', link: '/services' },
         { id: 4, name: 'Our Manu', link: '/manu' },
         { id: 5, name: 'Our Shop', link: '/ourShop', icon: shopIcon },
