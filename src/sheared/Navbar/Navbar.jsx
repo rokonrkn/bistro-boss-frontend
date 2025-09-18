@@ -12,6 +12,7 @@ const Navbar = () => {
         { id: 3, name: 'Dashboard', link: '/services' },
         { id: 4, name: 'Our Manu', link: '/manu' },
         { id: 5, name: 'Our Shop', link: '/ourShop', icon: shopIcon },
+        { id: 6, name: 'Login', link: '/login' }
     ]
 
 

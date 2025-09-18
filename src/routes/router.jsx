@@ -4,6 +4,8 @@ import Home from "../page/Home/Home/Home";
 import Manu from "../page/manu/Manu";
 import OurShop from "../page/OurShop/OurShop/OurShop";
 import ContactUs from "../page/ContactUs/ContactUs";
+import Login from "../components/Login/Login";
+import Registration from "../components/Registration/Registration";
 
 
 export const router = createBrowserRouter([
@@ -29,4 +31,12 @@ export const router = createBrowserRouter([
       }
     ],
   },
+  {
+    path: "login",
+    element: <Login />,
+  },
+  {
+    path: "register",
+    element: <Registration />,
+  }
 ]);
