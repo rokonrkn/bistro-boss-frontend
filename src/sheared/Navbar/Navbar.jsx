@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../../assets/others/bistro_logo.png'
 import shopIcon from '../../assets/icon/151-1511569_cart-notifications-free-shopping-cart-favicon-hd-png-removebg-preview.png'
 import { NavLink } from "react-router-dom";
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 
 const Navbar = () => {
+
+    const { loginUser } = useContext(AuthContext)
 
     const manuItem = [
         { id: 1, name: 'Home', link: '/' },
@@ -12,7 +15,9 @@ const Navbar = () => {
         { id: 3, name: 'Dashboard', link: '/services' },
         { id: 4, name: 'Our Manu', link: '/manu' },
         { id: 5, name: 'Our Shop', link: '/ourShop', icon: shopIcon },
-        { id: 6, name: 'Login', link: '/login' }
+        loginUser && loginUser.email
+            ? { id: 6, name: loginUser.email, link: "/profile" } 
+            : { id: 6, name: "Login", link: "/login" },
     ]
 
 
