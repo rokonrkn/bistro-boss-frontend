@@ -7,9 +7,7 @@ const AuthProvider = ({ children }) => {
     const [loginUser, setUser] = useState(null);
     const [jwtToken, setToken] = useState(null);
 
-    console.log(jwtToken)
 
-    // restore user on page refresh
     useEffect(() => {
         const savedUser = localStorage.getItem("authUser");
         const savedToken = localStorage.getItem("authToken");
@@ -21,11 +19,19 @@ const AuthProvider = ({ children }) => {
     }, []);
 
     const login = (user, token) => {
-        setUser(user); // ✅ Correct: set the actual user object
+        setUser(user);
         setToken(token);
         localStorage.setItem("authUser", JSON.stringify(user));
         localStorage.setItem("authToken", token);
     };
+
+
+    const logOut = () => {
+        setUser(null)
+        setToken(null)
+        localStorage.removeItem("authUser");
+        localStorage.removeItem("authToken");
+    }
 
 
     return (
@@ -34,6 +40,7 @@ const AuthProvider = ({ children }) => {
                 loginUser,
                 jwtToken,
                 login,
+                logOut
             }}>
             {children}
         </AuthContext.Provider>

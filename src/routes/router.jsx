@@ -6,6 +6,12 @@ import OurShop from "../page/OurShop/OurShop/OurShop";
 import ContactUs from "../page/ContactUs/ContactUs";
 import Login from "../components/Login/Login";
 import Registration from "../components/Registration/Registration";
+import DashboardHome from "../Dashboard/AdminDashboard/Home/DashboardHome";
+import DashboardLayout from "../Dashboard/AdminDashboard/DashboardLayout";
+import AddItem from "../Dashboard/AdminDashboard/AddItem/AddItem";
+import ManageItem from "../Dashboard/AdminDashboard/ManageItem/ManageItem";
+import MangeBooking from "../Dashboard/AdminDashboard/MangeBooking/MangeBooking";
+import AllUsers from "../Dashboard/AdminDashboard/AllUsers/AllUsers";
 
 
 export const router = createBrowserRouter([
@@ -27,7 +33,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'contact',
-        element: <ContactUs/>
+        element: <ContactUs />
       }
     ],
   },
@@ -38,5 +44,31 @@ export const router = createBrowserRouter([
   {
     path: "register",
     element: <Registration />,
+  },
+  {
+    path: 'dashboard',
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: '',
+        element: <DashboardHome />
+      },
+      {
+        path: 'add-item',
+        element: <AddItem />
+      },
+      {
+        path: 'manage-items',
+        element: <ManageItem />
+      },
+      {
+        path: 'manage-booking',
+        element: <MangeBooking />  
+      },
+      {
+        path: 'all-users',
+        element: <AllUsers />
+      }
+    ]
   }
 ]);
