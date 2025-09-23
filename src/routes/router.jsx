@@ -12,6 +12,7 @@ import AddItem from "../Dashboard/AdminDashboard/AddItem/AddItem";
 import ManageItem from "../Dashboard/AdminDashboard/ManageItem/ManageItem";
 import MangeBooking from "../Dashboard/AdminDashboard/MangeBooking/MangeBooking";
 import AllUsers from "../Dashboard/AdminDashboard/AllUsers/AllUsers";
+import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 
 
 export const router = createBrowserRouter([
@@ -47,7 +48,10 @@ export const router = createBrowserRouter([
   },
   {
     path: 'dashboard',
-    element: <DashboardLayout />,
+    element:
+      <ProtectedRoute>
+        <DashboardLayout />
+      </ProtectedRoute>,
     children: [
       {
         path: '',
@@ -63,7 +67,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'manage-booking',
-        element: <MangeBooking />  
+        element: <MangeBooking />
       },
       {
         path: 'all-users',
