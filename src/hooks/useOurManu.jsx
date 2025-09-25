@@ -9,7 +9,7 @@ const useOurManu = () => {
    const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
   useEffect(() => {
-    fetch(`${apiBaseUrl}/menuItems`)
+    fetch(`${apiBaseUrl}/api/menuItems`)
       .then(res => res.json())
       .then(data => {
         setManu(data);
@@ -17,7 +17,7 @@ const useOurManu = () => {
       });
   }, [apiBaseUrl]);
 
-  return [manu, loading];
+  return { manu, setManu, loading };
 };
 
 export default useOurManu;

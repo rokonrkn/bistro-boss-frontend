@@ -3,6 +3,8 @@ import loginImg from "../../assets/others/authentication2.png";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+  import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const [captcha, setCaptcha] = useState(generateCaptcha());
@@ -51,8 +53,9 @@ const Login = () => {
       if (res.ok) {
         login(data.user, data.token);
         navigate("/")
+        toast.success(data.message);
       } else {
-        setError(data.error || "Login failed");
+        toast.error(data.error);
       }
     } catch (err) {
       console.log(err)
@@ -61,6 +64,7 @@ const Login = () => {
 
   return (
     <div className="md:mx-40 h-screen flex items-center">
+      <ToastContainer />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-center justify-center bg-[#F3F3F3] shadow-md px-16 py-16">
         <div className="leftImg">
           <motion.img

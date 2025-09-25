@@ -1,3 +1,4 @@
+
 import React, { createContext, useEffect, useState } from 'react';
 
 export const AuthContext = createContext(null)
@@ -6,6 +7,7 @@ const AuthProvider = ({ children }) => {
 
     const [loginUser, setUser] = useState(null);
     const [jwtToken, setToken] = useState(null);
+    const [loader, setLoader] = useState(true)
 
 
     useEffect(() => {
@@ -16,6 +18,8 @@ const AuthProvider = ({ children }) => {
             setUser(JSON.parse(savedUser));
             setToken(savedToken);
         }
+
+        setLoader(false)
     }, []);
 
     const login = (user, token) => {
@@ -40,7 +44,8 @@ const AuthProvider = ({ children }) => {
                 loginUser,
                 jwtToken,
                 login,
-                logOut
+                logOut,
+                loader
             }}>
             {children}
         </AuthContext.Provider>
