@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { IoIosSend } from "react-icons/io";
 import SectionHeading from "../../../components/SectionHeading/SectionHeading";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddItem = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
@@ -14,41 +16,45 @@ const AddItem = () => {
         { value: "snacks", label: "Snacks" },
     ];
 
+    const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+
+
     const onSubmit = async (data) => {
         setLoading(true);
-
-        // Create FormData
         const formData = new FormData();
-        formData.append("recipe", data.recipe);
+        formData.append("name", data.name);
+        formData.append("description", data.description);
         formData.append("category", data.category);
         formData.append("price", data.price);
-        formData.append("details", data.details);
         if (data.image && data.image[0]) {
             formData.append("image", data.image[0]);
         }
 
-        for (let pair of formData.entries()) { console.log(pair[0] + ": ", pair[1]); }
+        // for (let pair of formData.entries()) { console.log(pair[0] + ": ", pair[1]); }
+        console.log([...formData]);
 
-        // Example: POST to backend
-        // try {
-        //   const response = await fetch("/api/add-item", {
-        //     method: "POST",
-        //     body: formData,
-        //   });
-        //   const result = await response.json();
-        //   console.log("Server response:", result);
+        try {
+            const response = await fetch(`${apiBaseUrl}/api/menuItems`, {
+                method: "POST",
+                body: formData,
+            });
+            const result = await response.json();
+            console.log("Server response:", result);
+            reset();
+            toast.success(result.message);
 
-        //   // Reset form
-        //   reset();
-        // } catch (error) {
-        //   console.error("Error uploading item:", error);
-        // } finally {
-        //   setLoading(false);
-        // }
+        } catch (error) {
+            console.error("Error uploading item:", error);
+            toast.error(error.message);
+
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
         <div className="md:px-44">
+            <ToastContainer />
             <div className="bg-[#E8E8E8] md:p-10 shadow-md">
                 <SectionHeading
                     subHeading="---What's New?---"
@@ -57,18 +63,18 @@ const AddItem = () => {
                 <div className="mt-10">
                     <form onSubmit={handleSubmit(onSubmit)}>
 
-                        {/* Recipe Name */}
+                        {/*  Name */}
                         <div className="form-control w-full flex flex-col mb-4">
-                            <label htmlFor="recipe">Recipe Name <sup>*</sup></label>
+                            <label htmlFor="name">Recipe Name <sup>*</sup></label>
                             <input
-                                id="recipe"
+                                id="name"
                                 type="text"
                                 placeholder="Recipe Name"
-                                {...register("recipe", { required: "Recipe Name is required" })}
+                                {...register("name", { required: "Recipe Name is required" })}
                                 className="border p-2 rounded bg-white focus:outline-none"
                             />
-                            {errors.recipe && (
-                                <span className="text-red-500 text-sm mt-1">{errors.recipe.message}</span>
+                            {errors.name && (
+                                <span className="text-red-500 text-sm mt-1">{errors.name.message}</span>
                             )}
                         </div>
 
@@ -123,15 +129,15 @@ const AddItem = () => {
 
                         {/* Recipe Details */}
                         <div className="form-control w-full flex flex-col mb-4">
-                            <label htmlFor="details">Recipe Details <sup>*</sup></label>
+                            <label htmlFor="description">Recipe description <sup>*</sup></label>
                             <textarea
-                                id="details"
-                                placeholder="Write Your Recipe Details Here"
-                                {...register("details", { required: "Recipe details is required" })}
+                                id="description"
+                                placeholder="Write Your Recipe description Here"
+                                {...register("description", { required: "Recipe description is required" })}
                                 className="border p-2 rounded bg-white focus:outline-none"
                             />
-                            {errors.details && (
-                                <span className="text-red-500 text-sm mt-1">{errors.details.message}</span>
+                            {errors.description && (
+                                <span className="text-red-500 text-sm mt-1">{errors.description.message}</span>
                             )}
                         </div>
 
