@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const ManuCategory = () => {
 
-    const [manu] = useOurManu();
+    const {manu} = useOurManu();
 
     const offered = manu.filter(item => item.category === 'offered');
     const dessert = manu.filter(item => item.category === 'dessert');
