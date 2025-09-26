@@ -1,19 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useOurManu from '../../../hooks/useOurManu';
 import SectionHeading from '../../../components/SectionHeading/SectionHeading';
 import { FiDelete, FiEdit } from 'react-icons/fi';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import UpdateItems from './UpdateItems';
 
 const ManageItem = () => {
 
     const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
-     const { manu, setManu } = useOurManu();
+    const { manu, setManu } = useOurManu();
+    const [updateItem, setUpdateItem] = useState(null);
 
 
-    const handleUpdateButton = (id) => {
-        console.log(id);
+    const handleUpdateButton = (item) => {
+        setUpdateItem(item);
     }
+
+    const closeUpdate = () => {
+        setUpdateItem(null);
+    };
+
+    const handleUpdateItemInList = (updatedItem) => {
+        setManu((prev) => prev.map((item) => item._id === updatedItem._id ? updatedItem : item));
+    };
+
     const handleDeleteButton = async (id) => {
         const proceed = window.confirm("Are you sure you want to delete?");
         if (proceed) {
@@ -48,6 +59,7 @@ const ManageItem = () => {
                     <thead className="bg-[#D99904] text-white">
                         <tr className="text-center">
                             <th className="px-4 py-2">SL</th>
+                            <th className="px-4 py-2">Image</th>
                             <th className="px-4 py-2">Name</th>
                             <th className="px-4 py-2">Category</th>
                             <th className="px-4 py-2">Price</th>
@@ -59,17 +71,39 @@ const ManageItem = () => {
                         {manu.map((item, index) => (
                             <tr key={item._id} className="text-center border-b">
                                 <td className="px-4 py-2">{index + 1}</td>
+                                <td className="px-4 py-2">
+                                    <img
+                                        src={item.image.startsWith("http") ? item.image : `http://localhost:5000/uploads/${item.image}`}
+                                        alt={item.name}
+                                        style={{ width: "100px", height: "100px", objectFit: "cover" }}
+                                    />
+                                </td>
                                 <td className="px-4 py-2">{item.name}</td>
                                 <td className="px-4 py-2">{item.category}</td>
                                 <td className="px-4 py-2">{item.price}</td>
-                                <td className="px-4 py-2"><button onClick={() => handleUpdateButton(item._id)} className='text-xl bg-[#D99904] p-2 rounded-sm text-white'><i><FiEdit /></i></button></td>
-                                <td className="px-4 py-2"><button onClick={() => handleDeleteButton(item._id)} className='text-xl bg-[#B91C1C] p-2 rounded-sm text-white'><i><FiDelete /></i></button></td>
-
+                                <td className="px-4 py-2">
+                                    <button onClick={() => handleUpdateButton(item)} className='text-xl bg-[#D99904] p-2 rounded-sm text-white'>
+                                        <FiEdit />
+                                    </button>
+                                </td>
+                                <td className="px-4 py-2">
+                                    <button onClick={() => handleDeleteButton(item._id)} className='text-xl bg-[#B91C1C] p-2 rounded-sm text-white'>
+                                        <FiDelete />
+                                    </button>
+                                </td>
                             </tr>
                         ))}
                     </tbody>
-                </table>
 
+                </table>
+                {/* Render UpdateItems component conditionally */}
+                {updateItem && (
+                    <UpdateItems
+                        item={updateItem}
+                        onClose={closeUpdate}
+                        onUpdate={handleUpdateItemInList}
+                    />
+                )}
             </div>
         </div>
     );

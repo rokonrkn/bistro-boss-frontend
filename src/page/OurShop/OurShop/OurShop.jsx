@@ -7,7 +7,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { useParams } from "react-router-dom";
 
 const OurShop = () => {
-  const [manu] = useOurManu();
+  const {manu} = useOurManu();
   const { category } = useParams();
 
   const tabItem = ["salad", "pizza", "soup", "dessert", "offered"];

@@ -5,7 +5,7 @@ import useOurManu from '../../../hooks/useOurManu';
 
 const OurManu = () => {
 
-    const [manu] = useOurManu();
+    const {manu} = useOurManu();
     const [popular, setPopular] = useState([]);
 
     const popularItems = manu.filter(item => item.category === 'popular');
