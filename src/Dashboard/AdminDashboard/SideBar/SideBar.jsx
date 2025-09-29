@@ -8,12 +8,12 @@ const SideBar = () => {
     console.log(loginUser?.role)
 
     const dashboardItems = [
-        { id: 1, name: 'Admin Home', link: '', roles: ['admin'] },
+        { id: 1, name: 'Admin Home', link: 'admin-home', roles: ['admin'] },
         { id: 2, name: 'Add Item', link: 'add-item', roles: ['admin'] },
         { id: 3, name: 'Manage Items', link: 'manage-items', roles: ['admin'] },
         { id: 4, name: 'Manage Booking', link: 'manage-booking', roles: ['admin'] },
         { id: 5, name: 'All Users', link: 'all-users', roles: ['admin'] },
-        { id: 6, name: 'User Home', link: '', roles: ['user'] },
+        { id: 6, name: 'User Home', link: 'user-home', roles: ['user'] },
         { id: 7, name: 'Reservation', link: 'reservation', roles: ['user'] },
         { id: 8, name: 'Payment History', link: 'payment-histoty', roles: ['user'] },
         { id: 9, name: 'My Cart', link: 'my-cart', roles: ['user'] },

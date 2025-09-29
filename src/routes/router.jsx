@@ -13,6 +13,7 @@ import ManageItem from "../Dashboard/AdminDashboard/ManageItem/ManageItem";
 import MangeBooking from "../Dashboard/AdminDashboard/MangeBooking/MangeBooking";
 import AllUsers from "../Dashboard/AdminDashboard/AllUsers/AllUsers";
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
+import UserHome from "../Dashboard/UserDashboard/UserHome/UserHome";
 
 
 export const router = createBrowserRouter([
@@ -54,7 +55,7 @@ export const router = createBrowserRouter([
       </ProtectedRoute>,
     children: [
       {
-        path: '',
+        path: 'admin-home',
         element: <DashboardHome />
       },
       {
@@ -72,6 +73,10 @@ export const router = createBrowserRouter([
       {
         path: 'all-users',
         element: <AllUsers />
+      },
+      {
+        path: 'user-home',
+        element: <UserHome />
       }
     ]
   }
