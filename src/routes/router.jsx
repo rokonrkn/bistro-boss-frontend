@@ -14,6 +14,7 @@ import MangeBooking from "../Dashboard/AdminDashboard/MangeBooking/MangeBooking"
 import AllUsers from "../Dashboard/AdminDashboard/AllUsers/AllUsers";
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 import UserHome from "../Dashboard/UserDashboard/UserHome/UserHome";
+import Reservation from "../Dashboard/UserDashboard/Reservation/Reservation";
 
 
 export const router = createBrowserRouter([
@@ -77,6 +78,10 @@ export const router = createBrowserRouter([
       {
         path: 'user-home',
         element: <UserHome />
+      },
+      {
+        path: 'reservation',
+        element: <Reservation />
       }
     ]
   }

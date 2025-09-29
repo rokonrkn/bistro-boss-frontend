@@ -1,9 +1,15 @@
 import React from 'react';
+import SectionHeading from '../../../components/SectionHeading/SectionHeading';
+import TableField from './TableField';
 
 const Reservation = () => {
     return (
         <div>
-            this is reservation page 
+            <SectionHeading
+                subHeading={"---Reservation---"}
+                mainHeading={"Book a Table"}
+            ></SectionHeading> 
+            <TableField />
         </div>
     );
 };

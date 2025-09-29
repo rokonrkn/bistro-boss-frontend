@@ -50,3 +50,11 @@ body {
   border-bottom: 2px solid #ef4444 !important; 
   font-weight: 600;
 }
+
+/* input default icons black */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator,
+select {
+  color: black;
+  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg);
+}
