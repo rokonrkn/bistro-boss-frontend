@@ -17,6 +17,9 @@ import UserHome from "../Dashboard/UserDashboard/UserHome/UserHome";
 import Reservation from "../Dashboard/UserDashboard/Reservation/Reservation";
 
 
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
+
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -69,7 +72,8 @@ export const router = createBrowserRouter([
       },
       {
         path: 'manage-booking',
-        element: <MangeBooking />
+        element: <MangeBooking />,
+        loader: () => fetch(`${baseUrl}/bookings`)
       },
       {
         path: 'all-users',
