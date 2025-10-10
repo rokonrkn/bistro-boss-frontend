@@ -1,22 +1,49 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const TableField = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors }
   } = useForm();
 
-  const onSubmit = (data) => {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
+
+  const onSubmit = async (data) => {
     console.log("Form Data:", data);
+
+    try {
+      const response = await fetch(`${baseUrl}/bookings`, {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const result = await response.json();
+      console.log("Server response:", result);
+      reset();
+      toast.success(result.message);
+
+
+    } catch (error) {
+      console.error("Error uploading item:", error);
+      toast.error(error.message);
+
+    }
+
   };
 
   // Common input styles
   const inputClass = "w-full p-2 border border-gray-400 rounded bg-transparent text-gray-500 placeholder-gray-400 outline-none focus:ring-1 focus:ring-gray-400";
 
   return (
-    <div className='md:mx-20 mt-10'>
+    <div className='md:mx-20 mt-10'>.
+      <ToastContainer />
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid md:grid-cols-3 gap-4">
           {/* Date */}
