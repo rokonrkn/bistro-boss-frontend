@@ -77,7 +77,8 @@ export const router = createBrowserRouter([
       },
       {
         path: 'all-users',
-        element: <AllUsers />
+        element: <AllUsers />,
+        loader: () => fetch(`${baseUrl}/user/users`)
       },
       {
         path: 'user-home',
