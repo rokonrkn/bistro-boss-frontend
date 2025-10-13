@@ -30,6 +30,7 @@ const MangeBooking = () => {
       setBookings((prev) =>
         prev.map((b) => (b._id === id ? data.booking : b))
       );
+      
     } catch (error) {
       console.error("Error updating activity:", error);
     }
