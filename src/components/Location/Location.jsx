@@ -10,7 +10,7 @@ const Location = () => {
   }, []);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto px-6">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto px-6 mt-12">
       {items.map((item) => {
         const Icon = FaIcons[item.icon]; 
         return (

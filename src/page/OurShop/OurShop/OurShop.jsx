@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Cover from "../../../sheared/Cover/Cover";
 import coverImg from "../../../assets/shop/banner2.jpg";
 import useOurManu from "../../../hooks/useOurManu";
 import "react-tabs/style/react-tabs.css";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { useParams } from "react-router-dom";
+import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
 
 const OurShop = () => {
   const {manu} = useOurManu();
   const { category } = useParams();
+  const { handleAddToCart } = useContext(AuthContext);
+
 
   const tabItem = ["salad", "pizza", "soup", "dessert", "offered"];
 
@@ -91,7 +94,7 @@ const OurShop = () => {
                               <p className="text-sm text-gray-600">
                                 {menuItem.recipe}
                               </p>
-                              <button className="uppercase bg-[#c1bebe] px-2 py-2 rounded">
+                              <button onClick={() => handleAddToCart(menuItem)} className="uppercase bg-[#c1bebe] px-2 py-2 rounded">
                                 Add to cart
                               </button>
                             </div>
