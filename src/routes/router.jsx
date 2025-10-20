@@ -15,6 +15,7 @@ import AllUsers from "../Dashboard/AdminDashboard/AllUsers/AllUsers";
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 import UserHome from "../Dashboard/UserDashboard/UserHome/UserHome";
 import Reservation from "../Dashboard/UserDashboard/Reservation/Reservation";
+import MyCart from "../Dashboard/UserDashboard/MyCard/MyCart";
 
 
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
@@ -87,6 +88,10 @@ export const router = createBrowserRouter([
       {
         path: 'reservation',
         element: <Reservation />
+      },
+      {
+        path: 'my-cart',
+        element: <MyCart />
       }
     ]
   }
