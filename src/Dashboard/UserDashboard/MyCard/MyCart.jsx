@@ -1,17 +1,20 @@
 import React, { useContext } from 'react';
 import SectionHeading from '../../../components/SectionHeading/SectionHeading';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
+import { ToastContainer } from 'react-toastify';
 
 const MyCart = () => {
-  const { cart, handleRemoveCartItem } = useContext(AuthContext);
+  const { addCart , handleRemoveCartItem, totalAddedAmount } = useContext(AuthContext);
 
   return (
     <div>
+      <ToastContainer />
       <SectionHeading
         subHeading={"---My Cart---"}
         mainHeading={"WANNA ADD MORE?"}
       />
       <div>
+        <h2 className="text-2xl font-bold mb-4">Total Added Amount: ${totalAddedAmount}</h2>
         <table className="w-full">
           <thead>
             <tr className="bg-[#D1A054] text-white">
@@ -23,7 +26,7 @@ const MyCart = () => {
             </tr>
           </thead>
           <tbody>
-            {cart.map((item, index) => (
+            {addCart.map((item, index) => (
               <tr key={item._id} className="text-center">
                 <td>{index + 1}</td>
                 <td><img width={100} src={item.image} alt="" /></td>
