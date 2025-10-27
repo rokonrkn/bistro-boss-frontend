@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 
 const TableField = () => {
   const {
@@ -11,15 +12,27 @@ const TableField = () => {
     formState: { errors }
   } = useForm();
 
+  const { loginUser } = useContext(AuthContext)
+  console.log(loginUser?.email);
+
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
   const onSubmit = async (data) => {
     console.log("Form Data:", data);
+    const payload = {
+      name: data.name,
+      email: data.email,
+      date: data.date,
+      time: data.time,
+      guest: data.guest,
+      phone: data.phone,
+      userEmail: loginUser?.email
+    };
 
     try {
       const response = await fetch(`${baseUrl}/bookings`, {
         method: "POST",
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload),
         headers: {
           "Content-Type": "application/json",
         },
