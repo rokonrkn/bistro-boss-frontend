@@ -16,6 +16,9 @@ import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 import UserHome from "../Dashboard/UserDashboard/UserHome/UserHome";
 import Reservation from "../Dashboard/UserDashboard/Reservation/Reservation";
 import MyCart from "../Dashboard/UserDashboard/MyCard/MyCart";
+import MyBooking from "../Dashboard/UserDashboard/MyBooking/MyBooking";
+import { useContext } from "react";
+import { AuthContext } from "../Context/AuthProvider/AuthProvider";
 
 
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
@@ -92,7 +95,18 @@ export const router = createBrowserRouter([
       {
         path: 'my-cart',
         element: <MyCart />
+      },
+      {
+        path: 'my-booking',
+        element: <MyBooking />,
+        loader: () => {
+          const userData = JSON.parse(localStorage.getItem('authUser'));
+          const email = userData?.email;
+          return fetch(`${baseUrl}/bookings/${email}`);
+        }
       }
+
+
     ]
   }
 ]);
