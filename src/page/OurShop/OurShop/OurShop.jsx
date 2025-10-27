@@ -6,11 +6,12 @@ import "react-tabs/style/react-tabs.css";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
+import { ToastContainer } from "react-toastify";
 
 const OurShop = () => {
   const {manu} = useOurManu();
   const { category } = useParams();
-  const { handleAddToCart } = useContext(AuthContext);
+  const { updateCart } = useContext(AuthContext);
 
 
   const tabItem = ["salad", "pizza", "soup", "dessert", "offered"];
@@ -41,6 +42,7 @@ const OurShop = () => {
 
   return (
     <div>
+      <ToastContainer />
       <Cover
         bgImg={coverImg}
         title="Our Shop"
@@ -94,7 +96,7 @@ const OurShop = () => {
                               <p className="text-sm text-gray-600">
                                 {menuItem.recipe}
                               </p>
-                              <button onClick={() => handleAddToCart(menuItem)} className="uppercase bg-[#c1bebe] px-2 py-2 rounded">
+                              <button onClick={() => updateCart(menuItem)} className="uppercase bg-[#c1bebe] px-2 py-2 rounded">
                                 Add to cart
                               </button>
                             </div>
